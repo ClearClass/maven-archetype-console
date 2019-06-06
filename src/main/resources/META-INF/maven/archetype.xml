@@ -2,12 +2,13 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
            xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype/1.0.0
                                http://maven.apache.org/xsd/archetype-1.0.0.xsd">
-   <id>Архетип консольного приложения. Включает Spring-контекст и его загрузку в тестовом классе.</id>
+   <id>Архетип консольного приложения. Включает Spring-контекст, встраиваемую СУБД H2 (со сценарием инициализации) и jdbcTemplate-бин.</id>
    <sources>
       <source>src/main/java/Main.java</source>
    </sources>
    <resources>
-      <resource>src/main/resources/spring-context.xml</resource>
+      <resource>src/main/resources/applicationContext.xml</resource>
+      <resource>src/main/resources/init.sql</resource>
    </resources>
    <testSources>
       <source>src/test/java/MainTest.java</source>
