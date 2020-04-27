@@ -11,6 +11,7 @@ Maven-проект архетипа для консольного приложе
 * Версия 1.0 - базовая версия.
 * Версия 1.1 - добавлен Spring-контекст `spring-context.xml` и аннотация `@ContextConfiguration` для загрузки контекста в тестовом классе, а также соответствующие Maven-зависимости.
 * Версия 1.2 - в Spring-контекст добавлена встраиваемая СУБД **H2** (со сценарием инициализации) и связанный с ней jdbcTemplate-бин; загрузка xml-контекста осуществляется в главном и тестовом классе; в `pom.xml` добавлена настройка maven-jar-plugin для указания главного класса в `MANIFEST.MF`.
+* Версия 1.21 - в `pom.xml` добавлен `maven-shade-plugin` для упаковки зависимостей и создания исполняемого архива; удален `maven-jar-plugin`; в тестовом классе добавлено приведение типа (`int`) для устранения неоднозначности при вызове `assertEquals()`.
 
 ## Установка
 ```sh
@@ -18,9 +19,10 @@ $ mvn clean install
 ```
 Для проверки корректности установки можно воспользоваться командами:
 ```sh
-$ mvn archetype:generate -B -DarchetypeGroupId=lib.clearclass.maven.archetypes -DarchetypeArtifactId=maven-archetype-console -DarchetypeVersion=1.2 -DgroupId=com.company -DartifactId=myproject -Dversion=1.0-SNAPSHOT -Dpackage=mypack
+$ mvn archetype:generate -B -DarchetypeGroupId=lib.clearclass.maven.archetypes -DarchetypeArtifactId=maven-archetype-console -DarchetypeVersion=1.21 -DgroupId=com.company -DartifactId=myproject -Dversion=1.0-SNAPSHOT -Dpackage=mypack
 $ cd myproject
 $ mvn package
+$ java -jar target/myproject-1.0-SNAPSHOT.jar
 ```
 
 ## Использование с Eclipse

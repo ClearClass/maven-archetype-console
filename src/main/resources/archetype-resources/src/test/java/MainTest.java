@@ -25,7 +25,7 @@ public class MainTest {
 			queryData.add(new Object[]{"Пчела", 11});
 			queryData.add(new Object[]{"Утка", 16});
 			jdbcTemplate.batchUpdate(query, queryData);
-			assertEquals(4, jdbcTemplate.queryForObject("SELECT COUNT(*) FROM table1", Integer.class));
+			assertEquals(4, (int)jdbcTemplate.queryForObject("SELECT COUNT(*) FROM table1", Integer.class));
 			List<Map<String, Object>>  map = jdbcTemplate.queryForList("SELECT * FROM table1");			
 			System.out.println(map);
 	}
